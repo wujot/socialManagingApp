@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:https="http://www.w3.org/1999/xhtml">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+    <title th:text="|${user.userName}|"></title>
+
+    <style>
+        body {
+            font: 400 15px Lato, sans-serif;
+            line-height: 1.8;
+            color: #818181;
+        }
+
+        h1 {
+            color: #4682B4;
+            padding: 20px 20px 20px 20px;
+        }
+
+        .jumbotron {
+            height: 680px;
+            color: #fff;
+            padding: 100px 25px;
+            font-family: Montserrat, sans-serif;
+            font-size: 60px;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .jumbotron p {
+            font-weight: bold;
+            padding-top: 250px;
+            color: #4682B4;
+        }
+
+        .jumbotron p span {
+            font-size: 60px;
+        }
+
+        .container-fluid {
+            padding: 60px 50px;
+        }
+
+        #top {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            overflow: hidden;
+            z-index: 99999;
+        }
+
+        .navbar {
+            -webkit-box-shadow: 0 8px 6px -6px #999;
+            -moz-box-shadow: 0 8px 6px -6px #999;
+            box-shadow: 0 8px 6px -6px #999;
+            background-color: #4682B4;
+
+        }
+
+        .navbar-brand {
+            color: #fff;
+        }
+
+        .navbar-brand:hover {
+            color: #FF0000;
+        }
+
+        .navbar-right ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar-right li {
+            display: inline-block;
+        }
+
+        .navbar-right li a {
+            padding: 14px 16px;
+            text-decoration: none;
+            color: #fff;
+            border-bottom: 3px solid transparent;
+        }
+
+        .navbar-right li a:hover {
+            color: #FF0000;
+            background-color: white;
+        }
+
+        .active {
+            color: #503716;
+            border-bottom: #503716;
+            border-bottom: 3px solid #503716;
+        }
+
+        #welcome h1 {
+            color: deeppink;
+            padding: 20px 20px 20px 20px;
+            font-size: 48px;
+        }
+
+        #welcome h3 {
+            color: deeppink;
+        }
+
+        .icon {
+            font-size: 200px;
+            color: #4682B4;
+        }
+
+        h2 {
+            font-size: 24px;
+            text-transform: uppercase;
+            color: #303030;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+        h4 {
+            font-size: 19px;
+            line-height: 1.375em;
+            color: #303030;
+            font-weight: 400;
+            margin-bottom: 30px;
+        }
+
+        .bg-grey {
+            background-color: #f6f6f6;
+        }
+
+        #users h1 {
+            color: #4682B4;
+            padding: 20px 20px 20px 20px;
+            font-size: 48px;
+        }
+
+        #users h3 {
+            color:  #FF0000;
+        }
+
+        .icon {
+            font-size: 200px;
+            color: #4682B4;
+        }
+
+        #users ul table {
+            border: 1px solid #4682B4;
+            color: #4682B4;
+        }
+
+        #users ul table:hover {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            text-decoration: none;
+        }
+
+        #searchGroups ul table {
+            border: 1px solid #4682B4;
+            color: #4682B4;
+        }
+
+        #searchGroups ul table:hover {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            text-decoration: none;
+        }
+
+        #editUser ul table {
+            border: 1px solid #4682B4;
+            color: #4682B4;
+        }
+
+        #editUser ul table:hover {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        #add:hover {
+            color: #FF0000;
+        }
+
+        #remove:hover {
+            color: #FF0000;
+        }
+
+    </style>
+</head>
+<body id="body" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+<!-- Nav bar -->
+<div class="navbar" id="top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#top" style="font-weight: bold; font-size: 18px">Social Managing</a>
+        </div>
+        <div class="nav navbar-nav navbar-right">
+            <ul>
+                <li><a href="/">HOMEPAGE</a></li>
+                <li><a href="#editUser">EDIT USER</a></li>
+                <li><a href="#searchGroups">SEARCH GROUPS</a></li>
+                <li><a href="/users" th:href="@{/backToUsers}">BACK TO USERS</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Edit User -->
+<div id="editUser" class="container-fluid">
+    <div align="center">
+        <div class="row">
+            <div class="col-sm-8">
+                <h1 th:text="|Edit ${user.userName}|">Edit</h1>
+                <form action="#" method="post" th:action="@{/edituser}" th:object="${user}" style="width: 50%">
+                    <div class="form-group">
+                        <label for="userName">Username</label>
+                        <input type="text" class="form-control" id="userName" th:field="*{userName}">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="text" class="form-control" id="password" th:field="*{password}">
+                    </div>
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" class="form-control" id="firstName" th:field="*{firstName}">
+                    </div>
+                    <div class="form-group">
+                        <label for="surname">Surname</label>
+                        <input type="text" class="form-control" id="surname" th:field="*{surname}">
+                    </div>
+                    <div class="form-group">
+                        <label for="dob">Date Of Birth</label>
+                        <input type="date" class="form-control" id="dob" th:field="*{dob}">
+                    </div>
+                    <button type="submit" class="btn btn-default">Save Changes</button>
+                    <button type="reset" class="btn btn-default">Cancel</button>
+                </form>
+            </div>
+            <div class="col-sm-4">
+                <!-- List Of Groups -->
+                <h1 th:text="|Groups of ${user.userName}|">Groups</h1>
+                <div class="row" align="center">
+                    <ul style="padding-top: 25px" th:each="group : ${groups}">
+                        <div class="col">
+                            <a th:href="'/editGroup?id=' + ${group.id}">
+                                <li>
+                                    <table class="table" style="text-align: center">
+                                        <tbody>
+                                        <tr>
+                                            <td th:text="*{group.username}"></td>
+                                        </tr>
+                                        <tr>
+                                            <td th:text="|Remove group:|"></td>
+                                            <td><a th:href="'/removeGroupFromUser?id=' + ${group.id}"><span class="glyphicon glyphicon-remove" id="remove"></span></a></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </li>
+                            </a>
+                        </div>
+                    </ul>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Search Groups -->
+<div id="searchGroups" class="container-fluid" style="background-color: #fff;">
+    <div align="center">
+        <div class="row">
+            <div class="col-sm-4">
+                <span class="glyphicon glyphicon-search icon"></span>
+            </div>
+            <div class="col-sm-8">
+                <h1>Search Groups</h1>
+                <div align="center">
+                    <table width="80%">
+                        <tr>
+                            <td>
+                                <form action="#" method="post" th:action="@{/searchByName}" th:object="${group}" style="width: 50%">
+                                    <div class="form-group">
+                                        <label for="searchByName">Search by name</label>
+                                        <input type="text" class="form-control" id="searchByName" placeholder="Enter name" name="username">
+                                    </div>
+                                    <button type="submit" class="btn btn-deafult">Search</button>
+                                </form>
+                            </td>
+                            <td>
+                                <form action="#" method="post" th:action="@{/searchAllGroups}" style="width: 50%">
+                                    <div class="form-group">
+                                        <p>Search all groups</p>
+                                    </div>
+                                    <button type="submit" class="btn btn-deafult">Search All</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row" align="center">
+            <ul style="padding-top: 50px" th:each="group : ${searchGroups}">
+                <div class="col">
+                    <li>
+                        <table class="table" style="text-align: center">
+                            <tbody>
+                            <tr>
+                                <td th:text="|Name:|"></td>
+                                <td th:text="*{group.username}"></td>
+                            </tr>
+                            <tr>
+                                <td th:text="|Add Group to ${user.userName}|"></td>
+                                <td><a th:href="'/addGroupToUser?id=' + ${group.id}"><span class="glyphicon glyphicon-ok" id="add"></span></a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </li>
+                </div>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="container-fluid text-center">
+
+</footer>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:https="http://www.w3.org/1999/xhtml">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+    <title>Groups</title>
+
+    <style>
+        body {
+            font: 400 15px Lato, sans-serif;
+            line-height: 1.8;
+            color: #818181;
+        }
+
+        h1 {
+            color: #4682B4;
+            padding: 20px 20px 20px 20px;
+        }
+
+        .jumbotron {
+            height: 680px;
+            color: #fff;
+            padding: 100px 25px;
+            font-family: Montserrat, sans-serif;
+            font-size: 60px;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .jumbotron p {
+            font-weight: bold;
+            padding-top: 250px;
+            color: #4682B4;
+        }
+
+        .jumbotron p span {
+            font-size: 60px;
+        }
+
+        .container-fluid {
+            padding: 60px 50px;
+        }
+
+        #top {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            overflow: hidden;
+            z-index: 99999;
+        }
+
+        .navbar {
+            -webkit-box-shadow: 0 8px 6px -6px #999;
+            -moz-box-shadow: 0 8px 6px -6px #999;
+            box-shadow: 0 8px 6px -6px #999;
+            background-color: #4682B4;
+
+        }
+
+        .navbar-brand {
+            color: #fff;
+        }
+
+        .navbar-brand:hover {
+            color: #FF0000;
+        }
+
+        .navbar-right ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar-right li {
+            display: inline-block;
+        }
+
+        .navbar-right li a {
+            padding: 14px 16px;
+            text-decoration: none;
+            color: #fff;
+            border-bottom: 3px solid transparent;
+        }
+
+        .navbar-right li a:hover {
+            color: #FF0000;
+            background-color: white;
+        }
+
+        .active {
+            color: #503716;
+            border-bottom: #503716;
+            border-bottom: 3px solid #503716;
+        }
+
+        #welcome h1 {
+            color: deeppink;
+            padding: 20px 20px 20px 20px;
+            font-size: 48px;
+        }
+
+        #welcome h3 {
+            color: deeppink;
+        }
+
+        .icon {
+            font-size: 200px;
+            color: #4682B4;
+        }
+
+        h2 {
+            font-size: 24px;
+            text-transform: uppercase;
+            color: #303030;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+        h4 {
+            font-size: 19px;
+            line-height: 1.375em;
+            color: #303030;
+            font-weight: 400;
+            margin-bottom: 30px;
+        }
+
+        .bg-grey {
+            background-color: #f6f6f6;
+        }
+
+        #users h1 {
+            color: #4682B4;
+            padding: 20px 20px 20px 20px;
+            font-size: 48px;
+        }
+
+        #users h3 {
+            color:  #FF0000;
+        }
+
+        .icon {
+            font-size: 200px;
+            color: #4682B4;
+        }
+
+        .iconSmall {
+            color: #4682B4;
+        }
+
+        .iconSmall:hover {
+            color: #FF0000;
+        }
+
+        #users a {
+            background-color: #4682B4;
+            color: #4682B4;
+            text-decoration: none;
+            font-size: 34px;
+        }
+
+        #users a:hover {
+            background-color: #FF0000;
+            color: #FF0000;
+        }
+
+        #users a span {
+            color: #4682B4;
+        }
+
+        #users a span:hover {
+            color: #FF0000;
+        }
+
+        #groups ul table {
+            border: 1px solid #4682B4;
+            color: #4682B4;
+            list-style-type: none;
+        }
+
+        #groups ul table:hover {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+<body id="body" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+<!-- Nav bar -->
+<div class="navbar" id="top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#top" style="font-weight: bold; font-size: 18px">Social Managing</a>
+        </div>
+        <div class="nav navbar-nav navbar-right">
+            <ul>
+                <li><a href="/">HOMEPAGE</a></li>
+                <li><a href="#groups">GROUPS</a></li>
+                <li><a href="#addGroup">ADD GROUP</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Groups -->
+<div id="groups" class="container-fluid" style="background-color: #fff;">
+    <div align="center">
+        <h1 style="text-align: center">Groups</h1>
+        <div class="row">
+            <!-- List Of Groups -->
+            <div class="row" align="center">
+                <ul style="padding-top: 25px; list-style-type: none;" th:each="group : ${groups}">
+                    <div class="col">
+                        <li>
+                            <table class="table" style="text-align: center">
+                                <tbody>
+                                <tr>
+                                    <td style="font-weight: bold" th:text="|Group Name:|"></td>
+                                    <td th:text="*{group.username}"></td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: bold" th:text="|Number Of Users:|"></td>
+                                    <td th:text="${#lists.size(group.users)}"></td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: bold"th:text="|Edit Group:|"></td>
+                                    <td><a th:href="'/editGroup?id=' + ${group.id}"><span class="glyphicon glyphicon-pencil iconSmall"></span></a></td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: bold" th:text="|Remove Group:|"></td>
+                                    <td><a th:href="'/deleteGroup?id=' + ${group.id}"><span class="glyphicon glyphicon-remove iconSmall"></span></a></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </li>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Group -->
+<div id="addGroup" class="container-fluid bg-grey">
+    <div align="center">
+        <div class="row">
+            <div class="col-sm-8">
+                <h1>Add Group</h1>
+                <div align="center">
+                    <form action="#" method="post" th:action="@{/addGroup}" th:object="${group}" style="width: 50%">
+                        <div class="form-group">
+                            <label for="name">Group Name</label>
+                            <input type="text" class="form-control" id="name" th:field="*{username}">
+                        </div>
+                        <button type="submit" class="btn btn-default">Add Group</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <span class="glyphicon glyphicon-list icon"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="container-fluid text-center">
+
+</footer>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+</body>
+
+</html>
